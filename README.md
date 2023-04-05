@@ -32,9 +32,11 @@ $ ./app/omni.create.bat --/rtx/ecoMode/enabled=false --ext-folder exts --enable 
 
 Or simply search for this community extension within the Extension Window of Create !
 
-## Some Math
+## Implementation
+- Since they are no projectors in Omniverse, a projector will be represented as:
+  - A camera with the frustum of the projector
+    - A child `RectLight` with the correct frustum that represents the light emitted
 
-//TODO @Antoine ?
 
 ## Resources
 - [MPCDI Christie Digital Github](https://github.com/ChristieDigital/mpcdi/blob/master/MPCDI_explained.md)
@@ -46,5 +48,5 @@ Or simply search for this community extension within the Extension Window of Cre
 ## Known issues
 
 - So far, no way to Reference or Payload directly an `.mpcdi.xml` file.
-- While USD Cameras support Lens shift through the `offset`, the `RectLight` used to simulate the projector light does not offer such feature yet.  
+- While USD Cameras support Lens shift through the `offset`, the `RectLight` used to simulate the projector light does not offer such feature yet. 
 - Does not support yet the full MPCDI zip archive, only `.mpcdi.xml`
