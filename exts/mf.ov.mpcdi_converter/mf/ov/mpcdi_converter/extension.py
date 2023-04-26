@@ -60,7 +60,7 @@ class MPCDIConverterHelper:
                 for buffer in display:
                     bufferId = buffer.attrib['id']
                     bufferPath = mpcdiId + '/' + self._cleanNameForUSD(bufferId)
-                    stage.DefinePrim(bufferPath)
+                    stage.DefinePrim(bufferPath, "Scope")
 
                     # A region is a projector
                     for region in buffer:
