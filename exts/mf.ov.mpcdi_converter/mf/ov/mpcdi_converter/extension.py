@@ -50,7 +50,7 @@ class MPCDIConverterHelper:
             stage = omni.usd.get_context().get_stage()
 
             mpcdiId = "/MPCDI"
-            stage.DefinePrim(mpcdiId)
+            stage.DefinePrim(mpcdiId, "Scope")
 
             # Create usd content here
             for display in root:
@@ -60,7 +60,7 @@ class MPCDIConverterHelper:
                 for buffer in display:
                     bufferId = buffer.attrib['id']
                     bufferPath = mpcdiId + '/' + self._cleanNameForUSD(bufferId)
-                    stage.DefinePrim(bufferPath)
+                    stage.DefinePrim(bufferPath, "Scope")
 
                     # A region is a projector
                     for region in buffer:
