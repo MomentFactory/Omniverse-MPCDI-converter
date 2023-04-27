@@ -191,7 +191,6 @@ class MPCDIConverterHelper:
 
     def _create_import_task(self, absolute_path, relative_path, export_folder, _):
         stage = omni.usd.get_context().get_stage()
-        newDir = False
         usd_path = ""
 
         # If the stage is not saved save the imported USD next to the original asset.
@@ -201,8 +200,6 @@ class MPCDIConverterHelper:
             basename = relative_path[:relative_path.rfind(".")]
             no_folder_name = absolute_path[:absolute_path.find("/" + relative_path)]
             host_dir = os.path.join(no_folder_name, "convertedAssets", basename + ext).replace("\\", "/")
-            if not OmniClientWrapper.exists_sync(host_dir):
-                newDir = OmniClientWrapper.create_folder_sync(host_dir)
 
         # Save the imported USD next to the saved stage.
         path_out = omni.usd.get_context().get_stage_url()
@@ -212,18 +209,11 @@ class MPCDIConverterHelper:
             path_out = export_folder
 
         path_out_index = path_out.rfind("/")
-        success = -1
-        # stage not saved
-        if newDir:
-            success = self._convert_xml_to_usd(absolute_path)  # self._hi.convert_cad_file_to_usd(absolute_path, host_dir)
-            basename = self._cleanNameForUSD(basename)
-            usd_path = os.path.join(host_dir, basename + ".usd").replace("\\", "/")
-        # stage saved
-        else:
-            success = self._convert_xml_to_usd(absolute_path)  # self._hi.convert_cad_file_to_usd(absolute_path, path_out[:path_out_index])
-            ext_index = relative_path.rfind(".")
-            relative_path = self._cleanNameForUSD(relative_path[:ext_index]) + ".usd"
-            usd_path = os.path.join(path_out[:path_out_index], relative_path).replace("\\", "/")
+
+        success = self._convert_xml_to_usd(absolute_path)  # self._hi.convert_cad_file_to_usd(absolute_path, path_out[:path_out_index])
+        ext_index = relative_path.rfind(".")
+        relative_path = self._cleanNameForUSD(relative_path[:ext_index]) + ".usd"
+        usd_path = os.path.join(path_out[:path_out_index], relative_path).replace("\\", "/")
 
         logger = logging.getLogger(__name__)
         if success == 0:
