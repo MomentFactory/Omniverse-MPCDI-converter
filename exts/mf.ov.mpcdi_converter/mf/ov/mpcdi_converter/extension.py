@@ -165,8 +165,8 @@ class MPCDIConverterHelper:
                         rectLight.CreateAttribute('isProjector', Sdf.ValueTypeNames.Bool).Set(True)
                         rectLight.CreateAttribute('intensity', Sdf.ValueTypeNames.Float).Set(15000)
                         rectLight.CreateAttribute('exposure', Sdf.ValueTypeNames.Float).Set(5)
-                        rectLight.GetAttribute('width').Set(lightWidth)
-                        rectLight.GetAttribute('height').Set(lightHeight)
+                        rectLight.GetAttribute('inputs:width').Set(lightWidth)
+                        rectLight.GetAttribute('inputs:height').Set(lightHeight)
 
                         # Creating projector box mesh to simulate the space a projector takes in the space
                         projectorBoxPath = primPath + '/ProjectorBox'
@@ -176,9 +176,9 @@ class MPCDIConverterHelper:
                         projectorXform.ClearXformOpOrder()
                         projectorXform.AddTranslateOp().Set(value=(0, 0, 42.0))
                         projectorXform.AddScaleOp().Set(value=(50.0, 15, 40.0))
-        except Exception:
+        except Exception as e:
             logger = logging.getLogger(__name__)
-            logger.error("Failed to parse MPCDI file. Make sure it is not corrupt.")
+            logger.error(f"Failed to parse MPCDI file. Make sure it is not corrupt. {e}")
             return -1
 
         if hasLensShifting:
