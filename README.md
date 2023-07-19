@@ -2,12 +2,12 @@
 
 An Omniverse extension to convert MPDCI files to USD.
 
-MPCDI is a VESA interchange format for videoprojectors technical data. 
+MPCDI is a VESA interchange format for videoprojectors technical data.
 
 ## Getting started
 
-- Requires Omniverse Kit >= 104.1
-- Tested in Create 2022.3.3
+- Requires Omniverse Kit >= 105
+- Tested in USD Composer 2023.1.1
 
 ## Converting an MPCDI file
 
@@ -40,7 +40,7 @@ Or simply search for this community extension within the Extension Window of Cre
 - Each buffer is represented as a scope in the scene tree with each projector as a child.
 - MPCDI Extensions are currently ignored
 - The frustum of each projector is currently calculated with a focus distance of 2 unit and a focal length of 10.
- 
+
 ## Resources
 - [MPCDI Christie Digital Github](https://github.com/ChristieDigital/mpcdi/blob/master/MPCDI_explained.md)
 - MPCDIv2 standard can be downloaded from [the VESA website](https://vesa.org/vesa-standards/)
@@ -51,5 +51,5 @@ Or simply search for this community extension within the Extension Window of Cre
 ## Known issues
 
 - So far, no way to Reference or Payload directly an `.mpcdi.xml` file.
-- While USD Cameras support Lens shift through the `offset`, the `RectLight` used to simulate the projector light does not offer such feature yet. 
+- While USD Cameras support Lens shift through the `offset`, the `RectLight` used to simulate the projector light does not offer such feature yet.
 - Does not support yet the full MPCDI zip archive, only `.mpcdi.xml`
