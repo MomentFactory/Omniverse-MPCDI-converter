@@ -1,0 +1,26 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.usd.fileformat.e57-1.0.7%2B105.0.wx64.r.cp310.ub3f.zip"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp310"
+
+        [package.target.usd]
+            0 = "ub3f1+nv-usd+22.11"
+
+        [package.target.platform]
+            0 = "windows-x86_64"
+
+        [package.target.kit]
+            0 = "105.0"
+
+    [package.publish]
+        kitVersion = "105.0.0+release.109362.7d9ca099.tc"
+        date = 1684356765
+        buildNumber = "105.0+105.0.177.05d99388.tc"
+        repoName = "point-cloud-import"

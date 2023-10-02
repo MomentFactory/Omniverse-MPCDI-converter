@@ -1,0 +1,35 @@
+{
+    "Plugins": [
+      {
+        "Info": {
+          "SdfMetadata": {
+            "Usd_Triangle_SideLength": {
+                "type": "double",
+                "displayGroup": "Core",
+                "appliesTo": ["prims"],
+                "documentation:": "Length of the triangle side."
+            }
+        },
+        "Types": {
+            "MpcdiFileFormat": {
+              "bases": [
+                "SdfFileFormat"
+              ],
+              "displayName": "MPCDI Dynamic File Format",
+              "extensions": [
+                "xml"
+              ],
+              "formatId": "mpcdiFileFormat",
+              "primary": true,
+              "target": "usd"
+            }
+          }
+        },
+        "LibraryPath": "@PLUG_INFO_LIBRARY_PATH@",
+        "Name": "mpcdiFileFormat",
+        "ResourcePath": "@PLUG_INFO_RESOURCE_PATH@",
+        "Root": "@PLUG_INFO_ROOT@",
+        "Type": "library"
+      }
+    ]
+}

@@ -1,48 +1,38 @@
 [package]
-# Semantic Versioning is used: https://semver.org/
-version = "0.1.0"
-
-# Lists people or organizations that are considered the "authors" of the package.
-authors = ["Moment Factory","Antoine Pilote"]
-
-# The title and description fields are primarily for displaying extension info in UI
-title = "MF MPCDI converter"
-description="Brings the support of MPCDI videoprojector files."
-
-# Path (relative to the root) or content of readme markdown file for UI.
-readme  = "docs/README.md"
-
-# URL of the extension source repository.
-repository = "https://github.com/MomentFactory/Omniverse-MPCDI-converter"
-
-# One of categories for UI.
-category = "Simulation"
-
-# Keywords for the extension
-keywords =  ["videoprojector", "MPCDI", "audiovisual", "video", "projection", "videomapping"]
-
-# Location of change log file in target (final) folder of extension, relative to the root.
-# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+authors = ["Petra Hapalova <phapalova@nvidia.com>", "Michael Shelley", "Christopher Horvath"]
+category = "USD, Simulation"
 changelog="docs/CHANGELOG.md"
-
-# Preview image and icon. Folder named "data" automatically goes in git lfs (see .gitattributes file).
-# Preview image is shown in "Overview" of Extensions window. Screenshot of an extension might be a good preview image.
+description="mpcdi fileformat"
+icon = "data/icon.png"
+keywords = ["mpcdi", "usd", "fileformat", "sdf", "pointcloud", "pointclouds", "point cloud"]
 preview_image = "data/preview.png"
+readme  = "docs/README.md"
+repository = "https://gitlab-master.nvidia.com/omniverse/point-cloud-import"
+title = "USD MPCDI file format loader plugin"
+version = "1.0.7"
+toggleable = false
 
-# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
-icon = "data/mf-ov-extensions-icons.png"
+[package.writeTarget]
+# The extension will only run with the same kit-sdk version it was built with
+kit = true
+usd = true
 
-# Use omni.ui to build simple UI
+[core]
+reloadable = false
+# Load at the start, load all schemas with order -100 (with order -1000 the USD libs are loaded)
+order = -100
+
 [dependencies]
-"omni.kit.uiapp" = {}
+"omni.usd" = {}
 
-# Main python module this extension provides, it will be publicly available as "import mf.ov.mpcdi_converter".
+[settings]
+exts."omni.usd.fileformat.e57".rtx_max_file_size = 2147483648
+
+#We can't use omni.usd as a namespace, so strip out the omni.. this conforms with what physics do
 [[python.module]]
-#TODO mf.ov.mpcdi_converter
-name = "mf.ov.mpcdi_converter"
+name = "usd.fileformat.mpcdi"
 
-[[test]]
-# Extra dependencies only to be used during test run
-dependencies = [
-    "omni.kit.ui_test" # UI testing extension
-]
+#Adding this without a path or other attributes seems to be enough to cause the extension to be
+#decorated with the appropriate windows/linux magic e.g 'omni.usd.fileformat.e57-0.1.0+lx64.r.cp37'
+#When publish to extension registry
+[[native.plugin]]
