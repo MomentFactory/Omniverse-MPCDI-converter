@@ -50,7 +50,7 @@ class MPCDIConverterHelper:
             stage = omni.usd.get_context().get_stage()
 
             mpcdiId = "/MPCDI"
-            stage.DefinePrim(mpcdiId)
+            stage.DefinePrim(mpcdiId, "Xform")
 
             # Create usd content here
             for display in root:
