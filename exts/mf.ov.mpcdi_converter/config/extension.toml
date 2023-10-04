@@ -1,38 +1,31 @@
 [package]
-authors = ["Petra Hapalova <phapalova@nvidia.com>", "Michael Shelley", "Christopher Horvath"]
-category = "USD, Simulation"
-changelog="docs/CHANGELOG.md"
-description="mpcdi fileformat"
-icon = "data/icon.png"
-keywords = ["mpcdi", "usd", "fileformat", "sdf", "pointcloud", "pointclouds", "point cloud"]
-preview_image = "data/preview.png"
-readme  = "docs/README.md"
-repository = "https://gitlab-master.nvidia.com/omniverse/point-cloud-import"
-title = "USD MPCDI file format loader plugin"
-version = "1.0.7"
-toggleable = false
+version = "1.1.0"
 
-[package.writeTarget]
-# The extension will only run with the same kit-sdk version it was built with
-kit = true
-usd = true
+title = "MF MPCDI converter"
+description="Brings the support of MPCDI videoprojector files."
+authors = ["Moment Factory","Antoine Pilote"]
+
+readme  = "docs/README.md"
+changelog="docs/CHANGELOG.md"
+repository = "https://github.com/MomentFactory/Omniverse-MPCDI-converter"
+
+category = "Simulation"
+keywords =  ["videoprojector", "MPCDI", "audiovisual", "video", "projection", "videomapping"]
+
+preview_image = "data/preview.png"
+icon = "data/mf-ov-extensions-icons.png"
+
+toggleable = false
 
 [core]
 reloadable = false
 # Load at the start, load all schemas with order -100 (with order -1000 the USD libs are loaded)
 order = -100
 
+
 [dependencies]
-"omni.usd" = {}
+"omni.kit.uiapp" = {}
+"omni.kit.tool.asset_importer" = {}
 
-[settings]
-exts."omni.usd.fileformat.e57".rtx_max_file_size = 2147483648
-
-#We can't use omni.usd as a namespace, so strip out the omni.. this conforms with what physics do
 [[python.module]]
-name = "usd.fileformat.mpcdi"
-
-#Adding this without a path or other attributes seems to be enough to cause the extension to be
-#decorated with the appropriate windows/linux magic e.g 'omni.usd.fileformat.e57-0.1.0+lx64.r.cp37'
-#When publish to extension registry
-[[native.plugin]]
+name = "mf.ov.mpcdi_converter"
