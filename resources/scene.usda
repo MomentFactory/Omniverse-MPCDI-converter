@@ -7,17 +7,8 @@
 
 def Xform "World"
 {
-    def "MetropolitanMuseumOfArt" (
-	EdfDataParameters = {
-		string dataProviderId = "omniMet"
-		dictionary providerArgs = {
-			string dataLodLevel = "1"
-			string lod1Count = "20"
-			string deferredRead = "true"
-		}
-	}
-
-        payload = @./empty.edf@
+    def "MPCDI Payload" (
+        payload = @./test.xml@
     )
     {
     }
