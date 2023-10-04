@@ -32,8 +32,11 @@ class MPCDIConverterHelper:
         # Do not allow for a blank name
         if len(strOut) == 0:
             return "Default"
-        else:
-            return Tf.MakeValidIdentifier(strIn)
+        elif len(strOut) == 1 and strIn.isnumeric():
+            # If we have an index as a name, we only need to add _ beforehand.
+            return "_" + strIn
+
+        return Tf.MakeValidIdentifier(strIn)
 
     def _convert_xml_to_usd(self, absolute_path_xml):
         result = 0
@@ -50,7 +53,7 @@ class MPCDIConverterHelper:
             stage = omni.usd.get_context().get_stage()
 
             mpcdiId = "/MPCDI"
-            stage.DefinePrim(mpcdiId)
+            stage.DefinePrim(mpcdiId, "Xform")
 
             # Create usd content here
             for display in root:

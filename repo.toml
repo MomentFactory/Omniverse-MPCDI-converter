@@ -1,0 +1,52 @@
+# common settings for repo_usd for all USD plug-ins
+[repo_usd]
+usd_root = "${root}/_build/usd-deps/nv-usd/%{config}"
+# usd_root = "${root}/../../USD_INSTALLATIONS/USD_22-11"
+usd_python_root = "${root}/_build/usd-deps/python"
+generate_plugin_buildfiles = true
+plugin_buildfile_format = "cmake"
+generate_root_buildfile = true
+
+[repo_usd.plugin.mpcdiFileFormat]
+plugin_dir = "${root}/src/usd-plugins/fileFormat/mpcdiFileFormat"
+install_root = "${root}/_install/%{platform}/%{config}/mpcdiFileFormat"
+include_dir = "include/mpcdiFileFormat"
+additional_include_dirs = [
+    "../../../../_build/usd-deps/nv_usd/%{config}/include/tbb"
+]
+public_headers = [
+    "api.h",
+    "iMpcdiDataProvider.h",
+    "mpcdiDataProviderFactory.h"
+]
+private_headers = [
+    "mpcdiData.cpp",
+    "mpcdiPluginManager.h",
+    "mpcdiFileFormat.h",
+    "tinyxml2.h"
+]
+cpp_files = [
+    "mpcdiData.cpp",
+    "mpcdiDataProviderFactory.cpp",
+    "iMpcdiDataProvider.cpp",
+    "mpcdiPluginManager.cpp",
+    "mpcdiFileFormat.cpp",
+    "tinyxml2.cpp"
+]
+
+resource_files = [
+    "plugInfo.json"
+]
+usd_lib_dependencies = [
+    "arch",
+    "tf",
+    "plug",
+    "vt",
+    "gf",
+    "sdf",
+    "js",
+    "pcp",
+    "usdGeom",
+    "usd",
+    "usdLux"
+]

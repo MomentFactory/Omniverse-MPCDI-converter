@@ -1,5 +1,5 @@
 [package]
-version = "1.0.0"
+version = "1.1.0"
 
 title = "MF MPCDI converter"
 description="Brings the support of MPCDI videoprojector files."
@@ -15,8 +15,17 @@ keywords =  ["videoprojector", "MPCDI", "audiovisual", "video", "projection", "v
 preview_image = "data/preview.png"
 icon = "data/mf-ov-extensions-icons.png"
 
+toggleable = false
+
+[core]
+reloadable = false
+# Load at the start, load all schemas with order -100 (with order -1000 the USD libs are loaded)
+order = -100
+
+
 [dependencies]
 "omni.kit.uiapp" = {}
+"omni.kit.tool.asset_importer" = {}
 
 [[python.module]]
 name = "mf.ov.mpcdi_converter"
