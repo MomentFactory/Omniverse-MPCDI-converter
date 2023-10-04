@@ -70,7 +70,7 @@ Simply copy this dll into the extension folder by running :
 - Each buffer is represented as a scope in the scene tree with each projector as a child.
 - MPCDI \<Extensions\> are currently ignored
 - The frustum of each projector is currently calculated with a focus distance of 2 unit and a focal length of 10.
- 
+
 ## Resources
 - [MPCDI Christie Digital Github](https://github.com/ChristieDigital/mpcdi/blob/master/MPCDI_explained.md)
 - MPCDIv2 standard can be downloaded from [the VESA website](https://vesa.org/vesa-standards/)
