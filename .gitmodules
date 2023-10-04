@@ -1,0 +1,3 @@
+[submodule "src/usd-plugins/fileFormat/mpcdiFileFormat"]
+	path = src/usd-plugins/fileFormat/mpcdiFileFormat
+	url = https://github.com/MomentFactory/usd-mpcdi-plugin.git
