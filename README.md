@@ -10,6 +10,10 @@ MPCDI is a VESA interchange format for videoprojectors technical data.
 - Requires Omniverse Kit >= 105
 - Tested in USD Composer 2023.1.1 and 2023.2.0
 
+# Known issue
+
+- XML extension usage : Fileformat plugin doesn't support having multiple extenions such as .mpcdi.xml (while Omniverse allows it). Currently this extension uses the .xml extension, which is not very convenient.
+
 ## Using the extension
 
 Enable the Extension ( `Window` > `Extensions` from USD Composer ).
@@ -36,31 +40,42 @@ The source code of the USD FileFormat plugin resides in a submodule pointing tow
 
 The extension comes pre-built for Omniverse users but here are the steps if you want to build it by yourself.  
 
-### Retrieve Submodule
+### Build DLL for Omniverse
 
-`git submodule update --init`
-
-### Build DLL
-
-`build.bat`
-
-### Insert DLL in built extension
-
-Once the build is complete, a dll should be available following this path :
-
-`_install/windows-x86_64/release/mpcdiFileFormat/lib/mpcdiFileFormat.dll`
-
-Simply copy this dll into the extension folder by running : 
-
-`cp _install/windows-x86_64/release/mpcdiFileFormat/lib/mpcdiFileFormat.dll exts/mf.ov.mpcdi_converter/plugin`
+Just run `build.bat`. 
 
 ### Test Extension in Omniverse
 
 1. `Window` > `Extensions`
 2. ☰ > Settings
-3. ✚ Add `exts/` folder to the Extension Search Paths
+3. ✚ Add `_install\windows-x86_64\release` folder to the Extension Search Paths
 4. The user extension should appear on the left
 5. `Autoload` needs to be checked for the FileFormat plugin to be correctly loaded at USD Runtime. 
+
+### Build DLL for USDview
+
+The dependency configuration is contained in the [usd-deps.packman.xml](deps/usd-deps.packman.xml) file
+To switch to the correct USD version for USDview compilation, it is required to edit the packman configuration file to:
+
+```
+<project toolsVersion="5.6">
+  <dependency name="nv-usd" linkPath="../_build/usd-deps/nv-usd/${config}">
+    <package name="usd.py310.${platform}.usdview.${config}" version="0.23.05-tc.47+v23.05.b53573ea" />
+  </dependency>
+  <dependency name="python" linkPath="../_build/usd-deps/python">
+    <package name="python" version="3.10.13+nv1-${platform}" />
+  </dependency>
+</project>
+
+```
+
+Then build as usual with `./build.bat`
+
+To run USDview :
+
+- `source setenvwindows`
+
+- `usdview resource/scene.usda`
 
 ## Implementation note
 - Since they are no projectors in Omniverse, a projector will be represented as:
