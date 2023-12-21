@@ -159,15 +159,25 @@ if "%STAGE%" == "true" (
     REM Because we are illustrating that you can build the C++ schemas and distribute them
     REM independent of anything kit related.  All the copy is doing is putting everything in 
     REM one structure that can be referenced as a complete kit extension
-    echo D | xcopy "%~dp0src\kit-extension\exts\omni.example.schema" "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema" /s /Y
-    if not exist "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleSchema" mkdir "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleSchema"
-    echo F | xcopy "%~dp0_install\windows-x86_64\%CONFIG%\omniExampleSchema\OmniExampleSchema\*.*" "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleSchema" /Y
-    echo D | xcopy "%~dp0_install\windows-x86_64\%CONFIG%\omniExampleSchema\include" "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleSchema\include" /s /Y
-    echo D | xcopy "%~dp0_install\windows-x86_64\%CONFIG%\omniExampleSchema\lib" "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleSchema\lib" /s /Y
-    echo D | xcopy "%~dp0_install\windows-x86_64\%CONFIG%\omniExampleSchema\resources" "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleSchema\resources" /s /Y
-    if not exist "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleCodelessSchema" mkdir "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleCodelessSchema"
-    echo D | xcopy "%~dp0_install\windows-x86_64\%CONFIG%\omniExampleCodelessSchema\resources" "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleCodelessSchema\resources" /s /Y
+
+    REM this seems to be an example of how we can bring back all the python and other files from the ext folder to the _install folder.
+    REM commented but left here for reference 
+
+    REM echo D | xcopy "%~dp0src\kit-extension\exts\omni.example.schema" "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema" /s /Y
+    REM if not exist "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleSchema" mkdir "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleSchema"
+    REM echo F | xcopy "%~dp0_install\windows-x86_64\%CONFIG%\omniExampleSchema\OmniExampleSchema\*.*" "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleSchema" /Y
+    REM echo D | xcopy "%~dp0_install\windows-x86_64\%CONFIG%\omniExampleSchema\include" "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleSchema\include" /s /Y
+    REM echo D | xcopy "%~dp0_install\windows-x86_64\%CONFIG%\omniExampleSchema\lib" "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleSchema\lib" /s /Y
+    REM echo D | xcopy "%~dp0_install\windows-x86_64\%CONFIG%\omniExampleSchema\resources" "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleSchema\resources" /s /Y
+    REM if not exist "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleCodelessSchema" mkdir "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleCodelessSchema"
+    REM echo D | xcopy "%~dp0_install\windows-x86_64\%CONFIG%\omniExampleCodelessSchema\resources" "%~dp0_install\windows-x86_64\%CONFIG%\omni.example.schema\OmniExampleCodelessSchema\resources" /s /Y
     
+    copy the files we need for a clean prepackaged extension ready for publishing
+    xcopy "%~dp0exts\mf.ov.mpcdi_converter\*" "%~dp0_install\windows-x86_64\%CONFIG%\mf.ov.mpcdi_converter" /E /I /H /Y
+    ren "%~dp0_install\windows-x86_64\%CONFIG%\mpcdiFileFormat" "plugin"
+    move "%~dp0_install\windows-x86_64\%CONFIG%\plugin" "%~dp0_install\windows-x86_64\%CONFIG%\mf.ov.mpcdi_converter"
+    xcopy "%~dp0LICENSE" "%~dp0_install\windows-x86_64\%CONFIG%\mf.ov.mpcdi_converter\" /Y
+
     if !errorlevel! neq 0 ( goto Error )
 )
 
