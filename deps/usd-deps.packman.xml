@@ -5,6 +5,6 @@
     <package name="nv-usd" version="22.11.nv.0.2.1071.7d2f59ad-linux-aarch64_py310_${config}-dev_omniverse" platforms="linux-aarch64" />
   </dependency>
   <dependency name="python" linkPath="../_build/usd-deps/python">
-    <package name="python" version="3.10.10+nv1-${platform}" />
+    <package name="python" version="3.10.13+nv1-${platform}" />
   </dependency>
 </project>
