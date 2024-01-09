@@ -7,7 +7,7 @@
 
 def Xform "World"
 {
-    def "MPCDI_Payload" (
+    def Xform "MPCDI_Payload" (
         payload = @../exts/mf.ov.mpcdi_converter/mf/ov/mpcdi_converter/sample/Cube-mapping.mpcdi.xml@
     )
     {
