@@ -3,7 +3,7 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [1.1.1] - 2023-12-02
-- Deprecate kit 105
+- Deprecated kit 104
 - Monorepo for the USD fileformat plugin
 - Procedure to build for USDView
 
