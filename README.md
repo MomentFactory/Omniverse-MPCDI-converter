@@ -10,16 +10,16 @@ MPCDIv2 is under Copyright © 2013 – 2015 Video Electronics Standards Associat
 
 ## Requirements
 
-- Requires Omniverse Kit >= 105
-- Tested in USD Composer 2023.1.1 and 2023.2.0
+- Requires Omniverse Kit >= 105.1
+- Tested in USD Composer 2023.2.2 and 2023.2.0
 
 ## Build
 
-The extension comes pre-built for Omniverse users but here are the steps if you want to build it by yourself.  
+The extension comes pre-built for Omniverse users but here are the steps if you want to build it by yourself.
 
 ### Build DLL for Omniverse
 
-Just run `build.bat`. 
+Just run `build.bat`.
 
 ### Test in Omniverse
 
@@ -27,7 +27,7 @@ Just run `build.bat`.
 2. ☰ > Settings
 3. ✚ Add `_install\windows-x86_64\release` folder to the Extension Search Paths
 4. The user extension should appear on the left
-5. `Autoload` needs to be checked for the FileFormat plugin to be correctly loaded at USD Runtime. 
+5. `Autoload` needs to be checked for the FileFormat plugin to be correctly loaded at USD Runtime.
 
 ### Build DLL for USDview
 
@@ -61,7 +61,7 @@ Enable the Extension ( `Window` > `Extensions` from USD Composer ).
 [A sample MPCDI file](./exts/mf.ov.mpcdi_converter/mf/ov/mpcdi_converter/sample/Cube-mapping.mpcdi.xml) is provided.
 
 ### Reference an MPCDI file
-To reference an MPCDI file, just drag and drop the file on your viewport or your Stage Window. 
+To reference an MPCDI file, just drag and drop the file on your viewport or your Stage Window.
 
 ### Convert an MPCDI file
 
@@ -90,6 +90,6 @@ Or from the Content window :
 
 ## Known issues
 
-- While USD Cameras support Lens shift through the `offset`, the `RectLight` used to simulate the projector light does not offer such feature yet. 
+- While USD Cameras support Lens shift through the `offset`, the `RectLight` used to simulate the projector light does not offer such feature yet.
 - Does not support yet the full MPCDI zip archive, only `.mpcdi.xml`
 - XML extension usage : Fileformat plugin doesn't support having multiple extenions such as .mpcdi.xml (while Omniverse allows it). Currently this extension uses the .xml extension, which is not very convenient.
