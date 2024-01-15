@@ -1,5 +1,5 @@
 [package]
-version = "1.1.0"
+version = "1.1.1"
 
 title = "MF MPCDI converter"
 description="Brings the support of MPCDI videoprojector files."
@@ -29,3 +29,10 @@ order = -100
 
 [[python.module]]
 name = "mf.ov.mpcdi_converter"
+
+[package.target]
+kit = ["105.1"]
+
+[package.writeTarget]
+kit = true
+python = false

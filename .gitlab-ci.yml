@@ -1,4 +1,4 @@
 include:
   - project: 'momentfactory/products/xagora/omniverse/omniverse-gitlab-cicd'
     ref: main
-    file: 'py/py.gitlab-ci.yml'
+    file: 'cpp/cpp.gitlab-ci.yml'
