@@ -83,10 +83,10 @@ Or from the Content window :
 - The frustum of each projector is currently calculated with a focus distance of 2 unit and a focal length of 10.
 
 ## Resources
+- Inspired by : [NVIDIA' usd-plugin-sample](https://github.com/NVIDIA-Omniverse/usd-plugin-samples)
 - [MPCDI Christie Digital Github](https://github.com/ChristieDigital/mpcdi/blob/master/MPCDI_explained.md)
 - MPCDIv2 standard can be downloaded from [the VESA website](https://vesa.org/vesa-standards/)
 - MPCDIv2 is under Copyright © 2013 – 2015 Video Electronics Standards Association. All rights reserved.
-- [NVIDIA USD plugin example](https://github.com/NVIDIA-Omniverse/usd-plugin-samples)
 
 ## Known issues
 
